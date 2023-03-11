@@ -1,0 +1,35 @@
+*{
+    margin: 0px;
+    background-color: #33F2BE;
+
+}
+
+.header-title{
+    font-family: 'Audiowide', cursive;
+    background-color: #4B33F2;
+    color: #F9FAF8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 12px;
+    padding: 15px;
+    margin: 20px 0px;
+    border: 5px solid;
+    border-color:#F9FAF8;
+    border-radius: 10px;
+    background: linear-gradient(to right, #CA31E8, #33F2BE, #15EB12); /* Define a cor da linha usando um gradiente */
+    background-clip: padding-box; /* Define a área onde o fundo do gradiente é exibido */
+}
+
+.title h1{
+    background-color: inherit;
+}
+
+.container{
+    display: flex;
+    justify-content: center;    
+}
+
