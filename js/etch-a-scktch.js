@@ -17,30 +17,51 @@ sketchbook.style.lineHeight = '0%';
 
 sketchbook.style.margin = '20px';
 
-for (let row=0; row < whiteSquare;row++){
-    for (let col=0;col < whiteSquare;col++){
-        let cell = document.createElement('div');
+const clearFrame = document.querySelector('#clear');
 
-        cell.style.width = `${grideRowsCols}px`;
-        cell.style.height = `${grideRowsCols}px`;
-        cell.style.backgroundColor = 'white';
+clearFrame.addEventListener('click', () => {
+    callFrame();
+    });
 
-        cell.classList.add('cell');
-        cell.style.margin = '0px';
-        cell.style.display = 'inline-block';
-        sketchbook.appendChild(cell);
+function callFrame(){
+    for (let row=0; row < whiteSquare;row++){
+        for (let col=0;col < whiteSquare;col++){
+            let cell = document.createElement('div');
 
-        function fillCell() {
-            cell.style.backgroundColor = 'black';
-        }
-        
-        sketchbook.addEventListener('mousedown', () => {
-            cell.addEventListener('mousemove', fillCell);
-        });      
+            cell.style.width = `${grideRowsCols}px`;
+            cell.style.height = `${grideRowsCols}px`;
+            cell.style.backgroundColor = 'white';
 
-        sketchbook.addEventListener('mouseup', () => {
-            cell.removeEventListener('mousemove', fillCell);
-        });
-          
+            cell.classList.add('cell');
+            cell.style.margin = '0px';
+            cell.style.display = 'inline-block';
+            sketchbook.appendChild(cell);
+
+            function numberToPaint(){
+                let color = Math.floor(Math.random() * 255);
+                return color;
+            };
+
+            function fillCell() {
+
+                cell.style.backgroundColor = `rgb(${numberToPaint()}, ${numberToPaint()}, ${numberToPaint()})`; 
+            };
+            
+            sketchbook.addEventListener('mousedown', () => {
+                cell.addEventListener('mousemove', fillCell);
+            });      
+
+            sketchbook.addEventListener('mouseup', () => {
+                cell.removeEventListener('mousemove', fillCell);
+            });
+
+             clearFrame.addEventListener('click', () => {
+                sketchbook.removeChild(cell);
+                }); 
+            
+                     
+        };
     };
 };
+
+callFrame();
